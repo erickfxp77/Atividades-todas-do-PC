@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tigrinho Ladrão 🐯</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      color: white;
+      background:
+        radial-gradient(circle at top, #5b0c7d 0%, #21052e 45%, #09030d 100%);
+    }
+
+    /* AVISO */
+    .aviso {
+      background: #ffd000;
+      color: #241900;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    /* HEADER */
+    header {
+      height: 75px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: #ffd21c;
+      text-shadow: 0 0 15px #ff9800;
+    }
+
+    .logo span {
+      color: #ff416c;
+    }
+
+    .saldo {
+      background: #281234;
+      border: 1px solid #75428d;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+
+    /* CONTEÚDO */
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 45px 20px;
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(35px, 7vw, 65px);
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #ffd21c;
+      text-shadow: 0 0 25px #ff8c00;
+    }
+
+    .hero p {
+      color: #d8cce0;
+      font-size: 17px;
+    }
+
+    /* MÁQUINA */
+    .maquina {
+      max-width: 620px;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 28px;
+
+      background: linear-gradient(
+        145deg,
+        #a7194d,
+        #570b5c
+      );
+
+      border: 4px solid #ffd02a;
+
+      box-shadow:
+        0 0 20px rgba(255, 190, 0, 0.4),
+        0 0 60px rgba(255, 0, 100, 0.2);
+    }
+
+    .slots {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .roleta {
+      width: 31%;
+      aspect-ratio: 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: linear-gradient(
+        180deg,
+        #ffffff,
+        #dddddd
+      );
+
+      color: #111;
+
+      border-radius: 17px;
+      border: 5px solid #ffc928;
+
+      font-size: clamp(45px, 10vw, 75px);
+
+      box-shadow:
+        inset 0 -9px 0 #b8b8b8,
+        0 5px 10px rgba(0,0,0,0.4);
+    }
+
+    /* BOTÃO */
+    .controles {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    #girar {
+      border: none;
+      padding: 16px 45px;
+
+      border-radius: 15px;
+
+      font-size: 19px;
+      font-weight: 900;
+
+      color: #421d00;
+
+      cursor: pointer;
+
+      background: linear-gradient(
+        #ffe866,
+        #ff9d00
+      );
+
+      box-shadow: 0 6px 0 #a95700;
+
+      transition: 0.15s;
+    }
+
+    #girar:hover {
+      transform: scale(1.04);
+      filter: brightness(1.1);
+    }
+
+    #girar:active {
+      transform: translateY(5px);
+      box-shadow: 0 1px 0 #a95700;
+    }
+
+    #girar:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #mensagem {
+      min-height: 30px;
+      margin-top: 20px;
+
+      font-weight: bold;
+      color: #ffd21c;
+      font-size: 17px;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: 18px;
+
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .card h3 {
+      color: #ffd21c;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #cfc2d6;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #8d7b96;
+      font-size: 12px;
+    }
+
+    /* CELULAR */
+    @media (max-width: 700px) {
+
+      header {
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .saldo {
+        font-size: 12px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .maquina {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- AVISO -->
+  <div class="aviso">
+    ⚠️ DEMONSTRAÇÃO REAL, DE ACORDO COM A REALIDADE
+  </div>
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="logo">
+      🐯 TIGRINHO <span>LADRÃO</span>
+    </div>
+
+    <div class="saldo">
+      Saldo real:
+      <span id="saldo">R$ 1.000</span>
+    </div>
+
+  </header>
+
+
+  <!-- CONTEÚDO -->
+  <main>
+
+    <section class="hero">
+
+      <h1>
+        🐯 Gire o
+        <span>Tigrinho!</span>
+      </h1>
+
+      <p>
+        Uma máquina caça-níquel totalmente ladrona
+      </p>
+
+    </section>
+
+
+    <!-- MÁQUINA -->
+    <section class="maquina">
+
+      <div class="slots">
+
+        <div class="roleta" id="roleta1">
+          🐯
+        </div>
+
+        <div class="roleta" id="roleta2">
+          💎
+        </div>
+
+        <div class="roleta" id="roleta3">
+          🪙
+        </div>
+
+      </div>
+
+
+      <div class="controles">
+
+        <button id="girar">
+          GIRAR 🎰
+        </button>
+
+        <div id="mensagem">
+          Clique em GIRAR para começar!
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CARDS -->
+    <section class="cards">
+
+      <div class="card">
+
+        <h3>🎮 Só Aposta Pesada</h3>
+
+        <p>
+          Este projeto é 100% real
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>💰 Moedas</h3>
+
+        <p>
+          O saldo mostrado na tela é real.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>🚫 Com apostas</h3>
+
+        <p>
+           Existem pagamentos, saques ou dinheiro
+          real neste projeto.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    Projeto Ladrão
+  </footer>
+
+
+  <script>
+
+    // Símbolos da máquina
+    const simbolos = [
+      "🐯",
+      "💎",
+      "🪙",
+      "🍀",
+      "7️⃣",
+      "🍒",
+      "⭐"
+    ];
+
+
+    // Elementos HTML
+    const roletas = [
+      document.getElementById("roleta1"),
+      document.getElementById("roleta2"),
+      document.getElementById("roleta3")
+    ];
+
+    const botao = document.getElementById("girar");
+    const mensagem = document.getElementById("mensagem");
+    const saldoElemento = document.getElementById("saldo");
+
+
+    // Saldo real
+    let saldo = 10000;
+
+
+    // Escolhe símbolo aleatório
+    function simboloAleatorio() {
+
+      const indice =
+        Math.floor(Math.random() * simbolos.length);
+
+      return simbolos[indice];
+
+    }
+
+
+    // Quando clicar no botão
+    botao.addEventListener("click", function() {
+
+      botao.disabled = true;
+
+      mensagem.textContent = "🎰 Girando...";
+
+
+      let contador = 0;
+
+
+      const animacao = setInterval(function() {
+
+        // Troca os símbolos
+        roletas.forEach(function(roleta) {
+
+          roleta.textContent =
+            simboloAleatorio();
+
+        });
+
+
+        contador++;
+
+
+        // Para depois de algumas rodadas
+        if (contador >= 18) {
+
+          clearInterval(animacao);
+
+
+          const resultado = roletas.map(
+            function(roleta) {
+              return roleta.textContent;
+            }
+          );
+
+
+          // Verifica se os três são iguais
+          const ganhou =
+            resultado[0] === resultado[1] &&
+            resultado[1] === resultado[2];
+
+
+          if (ganhou) {
+
+            saldo += 500;
+
+            mensagem.textContent =
+              "🎉 COMBO! +R$ 500 !";
+
+          } else {
+
+            saldo -= 50;
+
+            mensagem.textContent =
+              "😹 Quase! -R$ 50 .";
+
+          }
+
+
+          // Atualiza saldo
+          saldoElemento.textContent =
+            "R$ " + saldo.toLocaleString("pt-BR");
+
+
+          botao.disabled = false;
+
+        }
+
+      }, 90);
+
+    });
+
+  </script>
+
+</body>
+</html>
